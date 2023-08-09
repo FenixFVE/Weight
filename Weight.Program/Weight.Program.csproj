@@ -17,10 +17,4 @@
     <PackageReference Include="NUnit" Version="3.13.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="WeightDatabase\dbsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
