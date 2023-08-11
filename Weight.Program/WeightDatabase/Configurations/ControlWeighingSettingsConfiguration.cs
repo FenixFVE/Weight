@@ -25,7 +25,7 @@ public class ControlWeighingSettingsConfiguration
         builder.HasOne(c => c.WeightSetting)
                .WithMany()
                .HasForeignKey(c => c.WeightSettingId)
-               .OnDelete(DeleteBehavior.SetNull);
+               .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasOne(c => c.SecondWeightSetting)
                .WithMany()

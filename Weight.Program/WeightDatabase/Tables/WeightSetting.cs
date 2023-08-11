@@ -8,6 +8,6 @@ public class WeightSetting
 {
     public int WeightSettingId { get; set; }
 
-    public int DepartmentId { get; set; }
+    public int? DepartmentId { get; set; } = null;
     public Departments? Department { get; set; } = null;
 }

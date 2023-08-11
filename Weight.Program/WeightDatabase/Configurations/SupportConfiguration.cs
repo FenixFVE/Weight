@@ -18,7 +18,7 @@ public class SupportConfiguration :
 
         builder.HasOne(c => c.Department)
                .WithMany()
-               .IsRequired()
+               //.IsRequired()
                .HasForeignKey(c => c.DepartmentId)
                .OnDelete(DeleteBehavior.SetNull);
 
