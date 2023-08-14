@@ -11,6 +11,7 @@ public class ControlWeighingConfiguration :
     {
         builder.HasKey(c => c.ControllWeighingId);
 
+
         builder.HasOne(c => c.ControlWeighingSettings)
                .WithMany()
                .HasForeignKey(c => c.ControlWeighingSettingsId)

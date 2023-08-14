@@ -17,6 +17,7 @@ public class WeightContext: DbContext
 
     public WeightContext()
     {
+        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
