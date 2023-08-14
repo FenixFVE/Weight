@@ -3,11 +3,9 @@ using Weight.Program.WeightDatabase.Configurations;
 
 namespace Weight.Program.WeightDatabase.Tables;
 
-[EntityTypeConfiguration(typeof(ControlWeighingSettingsConfiguration))]
-public class ControlWeighingSettings
+[EntityTypeConfiguration(typeof(ControlWeighingSettingConfiguration))]
+public sealed class ControlWeighingSetting: BaseTable
 {
-    public int ControlWeighingSettigsId { get; set; }
-
     public int? ControlWeighingScheduleTypeId { get; set; } = null;
     public ControlWeighingScheduleType? ControlWeighingScheduleType { get; set; } = null;
 

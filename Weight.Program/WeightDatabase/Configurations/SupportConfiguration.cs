@@ -9,7 +9,7 @@ public class SupportConfiguration :
 {
     public void Configure(EntityTypeBuilder<Support> builder)
     {
-        builder.HasKey(k => k.SupportId);
+        builder.HasKey(k => k.Id);
 
         builder.HasOne(c => c.SupportService)
                .WithMany()

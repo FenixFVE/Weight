@@ -10,7 +10,7 @@ public class ControlWeighingEvaluationTypeConfiguration :
 {
     public void Configure(EntityTypeBuilder<ControlWeighingEvaluationType> builder)
     {
-        builder.HasKey(c => c.ControlWeighingEvaluationTypeId);
+        builder.HasKey(c => c.Id);
 
         builder.Property(c => c.Name)
             //.IsRequired()

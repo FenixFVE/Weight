@@ -4,12 +4,12 @@ using Weight.Program.WeightDatabase.Tables;
 
 namespace Weight.Program.WeightDatabase.Configurations;
 
-public class ControlWeighingSettingsConfiguration
-    : IEntityTypeConfiguration<ControlWeighingSettings>
+public class ControlWeighingSettingConfiguration
+    : IEntityTypeConfiguration<ControlWeighingSetting>
 {
-    public void Configure(EntityTypeBuilder<ControlWeighingSettings> builder)
+    public void Configure(EntityTypeBuilder<ControlWeighingSetting> builder)
     {
-        builder.HasKey(k => k.ControlWeighingSettigsId);
+        builder.HasKey(k => k.Id);
 
         builder.HasOne(c => c.ControlWeighingScheduleType)
                .WithMany()

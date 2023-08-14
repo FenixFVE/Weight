@@ -4,11 +4,11 @@ using Weight.Program.WeightDatabase.Tables;
 
 namespace Weight.Program.WeightDatabase.Configurations;
 
-public class DepartmentsConfiguration :
-    IEntityTypeConfiguration<Departments>
+public class DepartmentConfiguration :
+    IEntityTypeConfiguration<Department>
 {
-    public void Configure(EntityTypeBuilder<Departments> builder)
+    public void Configure(EntityTypeBuilder<Department> builder)
     {
-        builder.HasKey(k => k.DeparmentId);
+        builder.HasKey(k => k.Id);
     }
 }

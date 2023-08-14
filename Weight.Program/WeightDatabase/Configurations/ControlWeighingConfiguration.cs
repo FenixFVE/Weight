@@ -9,7 +9,7 @@ public class ControlWeighingConfiguration :
 {
     public void Configure(EntityTypeBuilder<ControllWeighing> builder)
     {
-        builder.HasKey(c => c.ControllWeighingId);
+        builder.HasKey(c => c.Id);
 
 
         builder.HasOne(c => c.ControlWeighingSettings)

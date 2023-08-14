@@ -3,8 +3,7 @@ using Weight.Program.WeightDatabase.Configurations;
 
 namespace Weight.Program.WeightDatabase.Tables;
 
-[EntityTypeConfiguration(typeof(DepartmentsConfiguration))]
-public class Departments
+[EntityTypeConfiguration(typeof(DepartmentConfiguration))]
+public sealed class Department: BaseTable
 {
-    public int DeparmentId { get; set; }
 }

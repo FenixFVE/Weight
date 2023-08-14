@@ -9,7 +9,7 @@ public class SupportServiceConfiguration :
 {
     public void Configure(EntityTypeBuilder<SupportService> builder)
     {
-        builder.HasKey(k => k.SupportServiceId);
+        builder.HasKey(k => k.Id);
 
         builder.Property(c => c.Name)
             //.IsRequired()

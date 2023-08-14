@@ -4,9 +4,7 @@ using Weight.Program.WeightDatabase.Configurations;
 namespace Weight.Program.WeightDatabase.Tables;
 
 [EntityTypeConfiguration(typeof(ControlWeighingEvaluationTypeConfiguration))]
-public class ControlWeighingEvaluationType
+public sealed class ControlWeighingEvaluationType: BaseTable
 {
-    public int ControlWeighingEvaluationTypeId { get; set; }
-
     public string? Name { get; set; } = null;
 }

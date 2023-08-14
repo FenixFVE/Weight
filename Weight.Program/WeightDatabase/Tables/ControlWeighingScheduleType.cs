@@ -4,10 +4,7 @@ using Weight.Program.WeightDatabase.Configurations;
 namespace Weight.Program.WeightDatabase.Tables;
 
 [EntityTypeConfiguration(typeof(ControlWeighingScheduleTypeConfiguration))]
-public class ControlWeighingScheduleType
+public sealed class ControlWeighingScheduleType: BaseTable
 {
-
-    public int ControlWeighningScheduleTypeId { get; set; }
-
     public string? Name { get; set; } = null;
 }

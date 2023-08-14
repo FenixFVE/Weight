@@ -4,10 +4,8 @@ using Weight.Program.WeightDatabase.Configurations;
 namespace Weight.Program.WeightDatabase.Tables;
 
 [EntityTypeConfiguration(typeof(WeightSettingConfiguration))]
-public class WeightSetting
+public sealed class WeightSetting: BaseTable
 {
-    public int WeightSettingId { get; set; }
-
     public int? DepartmentId { get; set; } = null;
-    public Departments? Department { get; set; } = null;
+    public Department? Department { get; set; } = null;
 }

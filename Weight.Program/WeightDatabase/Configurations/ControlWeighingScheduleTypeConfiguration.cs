@@ -9,7 +9,7 @@ public class ControlWeighingScheduleTypeConfiguration :
 {
     public void Configure(EntityTypeBuilder<ControlWeighingScheduleType> builder)
     {
-        builder.HasKey(k => k.ControlWeighningScheduleTypeId);
+        builder.HasKey(k => k.Id);
 
         builder.Property(c => c.Name)
             //.IsRequired()

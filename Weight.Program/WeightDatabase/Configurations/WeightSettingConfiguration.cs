@@ -9,7 +9,7 @@ public class WeightSettingConfiguration :
 {
     public void Configure(EntityTypeBuilder<WeightSetting> builder)
     {
-        builder.HasKey(x => x.WeightSettingId);
+        builder.HasKey(x => x.Id);
 
         builder.HasOne(c => c.Department)
                .WithMany()
