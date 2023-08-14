@@ -27,4 +27,51 @@ public class AContext: DbContext
             .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=adb;Trusted_Connection=True")
             .AddInterceptors(new SoftDeleteInterceptor());
     }
+
+    public static void TestAContext()
+    {
+        using (var db = new AContext())
+        {
+            db.Database.EnsureDeleted();
+        }
+
+        using (var db = new AContext())
+        {
+            var a = new A { Name = "One" };
+            var b = new A { Name = "Two" };
+            db.AddRange(a, b);
+            db.SaveChanges();
+        }
+
+        using (var db = new AContext())
+        {
+            Console.WriteLine("{");
+            foreach (var a in db.As)
+            {
+                Console.WriteLine(" " + a);
+            }
+            Console.WriteLine("}");
+        }
+
+        using (var db = new AContext())
+        {
+            var a = db.As.FirstOrDefault();
+            if (a is not null)
+            {
+                db.As.Remove(a);
+                db.SaveChanges();
+            }
+        }
+
+        using (var db = new AContext())
+        {
+            Console.WriteLine("{");
+            foreach (var a in db.As)
+            {
+                Console.WriteLine(" " + a);
+            }
+            Console.WriteLine("}");
+        }
+    }
 }
+
