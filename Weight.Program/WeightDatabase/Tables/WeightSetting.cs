@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CsvHelper.Configuration.Attributes;
+using Microsoft.EntityFrameworkCore;
 using Weight.Program.WeightDatabase.Configurations;
 
 namespace Weight.Program.WeightDatabase.Tables;
@@ -7,6 +8,7 @@ namespace Weight.Program.WeightDatabase.Tables;
 public sealed class WeightSetting: BaseTable
 {
     public int? DepartmentId { get; set; } = null;
+    [Ignore]
     public Department? Department { get; set; } = null;
     public string? IP { get; set; } = null;
     public int? Port { get; set; } = null;
