@@ -1,24 +1,20 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using Weight.Program.WeightDatabase;
 using Weight.Program.WeightDatabase.Tables;
 
-public sealed class A: BaseTable
+
+public class TestContext: DbContext
 {
-    public string? Name { get; set; } = null;
+    public DbSet<SupportService> SupportServices { get; set; }
 
-    public override string ToString()
-        => $"Id:{Id},IsDelet:{IsDelete},Name:{Name}";
-}
-
-public class AContext: DbContext
-{
-    public DbSet<A> As { get; set; }
-
-    public AContext()
+    public TestContext()
     {
-        //Database.EnsureDeleted();
-        Database.EnsureCreated();
+        if (!Database.CanConnect())
+        {
+            Database.EnsureCreated();
+        }
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,49 +24,38 @@ public class AContext: DbContext
             .AddInterceptors(new SoftDeleteInterceptor());
     }
 
-    public static void TestAContext()
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        using (var db = new AContext())
+
+        var assembly = Assembly.GetExecutingAssembly();
+        var resourceName = @".\Db\SupportService.csv";
+
+        Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+        Console.WriteLine(File.Exists(resourceName) ? "Exist" : "Don't exist");
+
+        base.OnModelCreating(modelBuilder);
+    }
+
+    public static void Print<T>(DbSet<T> set) where T : BaseTable
+    {
+        Console.WriteLine($"{typeof(T).Name} {{");
+        foreach (var x in set)
+        {
+            Console.WriteLine($" Id: {x.Id}, IsDelete: {x.IsDelete}");
+        }
+        Console.WriteLine("}");
+    }
+
+    public static void TestAContextAsync()
+    {
+        using (var db = new TestContext())
         {
             db.Database.EnsureDeleted();
         }
 
-        using (var db = new AContext())
+        using (var db = new TestContext())
         {
-            var a = new A { Name = "One" };
-            var b = new A { Name = "Two" };
-            db.AddRange(a, b);
-            db.SaveChanges();
-        }
-
-        using (var db = new AContext())
-        {
-            Console.WriteLine("{");
-            foreach (var a in db.As)
-            {
-                Console.WriteLine(" " + a);
-            }
-            Console.WriteLine("}");
-        }
-
-        using (var db = new AContext())
-        {
-            var a = db.As.FirstOrDefault();
-            if (a is not null)
-            {
-                db.As.Remove(a);
-                db.SaveChanges();
-            }
-        }
-
-        using (var db = new AContext())
-        {
-            Console.WriteLine("{");
-            foreach (var a in db.As)
-            {
-                Console.WriteLine(" " + a);
-            }
-            Console.WriteLine("}");
+            
         }
     }
 }

@@ -1,0 +1,4 @@
+﻿Id;Type;Name;AuditDate;CreaterId;DeletedDate;DeletedUser;IsDelete
+2;1;От контрольного груза;2023-08-11 11:59:46.650;NULL;NULL;NULL;0
+3;2;Отклонение 2-х взвешиваний;2023-08-11 11:59:46.650;NULL;NULL;NULL;0
+4;3;Отклонение 3-х взвешиваний;2023-08-11 11:59:46.650;NULL;NULL;NULL;0

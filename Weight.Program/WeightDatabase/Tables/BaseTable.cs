@@ -7,10 +7,12 @@ public class BaseTable
 
     public bool IsDelete { get; set; } = false;
     public DateTime? DeletedDate { get; set; } = null;
+    public int? DeletedUser { get; set; } = null;
     
     public void Restore()
     {
         IsDelete = false;
         DeletedDate = null;
+        DeletedUser = null;
     }
 }

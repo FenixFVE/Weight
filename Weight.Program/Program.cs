@@ -9,6 +9,6 @@ public class Program
 {
     private static void Main(string[] args)
     {
-        AContext.TestAContext();
+        TestContext.TestAContextAsync();
     }
 }

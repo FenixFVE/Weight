@@ -1,0 +1,6 @@
+﻿Id;Name;Type;AuditDate;CreaterId;DeletedDate;DeletedUser;IsDelete
+2;Отклонено;2;2023-08-11 11:59:46.810;NULL;NULL;NULL;0
+3;Назначено;1;2023-08-11 11:59:46.810;NULL;NULL;NULL;0
+4;Выполнено;3;2023-08-11 11:59:46.810;NULL;NULL;NULL;0
+5;Не пройдено;4;2023-08-11 11:59:46.810;NULL;NULL;NULL;0
+6;В работе;5;2023-08-11 11:59:46.810;NULL;NULL;NULL;0
