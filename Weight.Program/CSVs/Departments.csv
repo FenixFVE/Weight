@@ -1,4 +1,4 @@
-﻿DepartmentID;Name;IsDelete;ParentID;ShortName;DepartmentTypeId;LocalizationId;Code;FactoryId;ComplexId;IsCustomer;MasterDataCode;IsMasterData;AuditDate;CreaterId;DeletedDate;DeletedUser;ShortLocalizationId;SavedFullPathId;SavedFullPathShortName;SavedFullPathName;SavedLevel;LabWareCode
+﻿Id;Name;IsDelete;ParentId;ShortName;DepartmentTypeId;LocalizationId;Code;FactoryId;ComplexId;IsCustomer;MasterDataCode;IsMasterData;AuditDate;CreaterId;DeletedDate;DeletedUser;ShortLocalizationId;SavedFullPathId;SavedFullPathShortName;SavedFullPathName;SavedLevel;LabWareCode
 1;УКМК;0;NULL;УКМК;3;3022;UKMC;0;1;0;NULL;0;NULL;NULL;NULL;NULL;NULL;1;УКМК;УКМК;0;23
 2;Участок входного контроля;0;130;УВК;1;3093;NULL;0;1;0;NULL;0;NULL;NULL;NULL;NULL;NULL;1\239\130\2;УКМК\САиТК\ОТК\УВК;УКМК\САиТК\Отдел технического контроля\Участок входного контроля;3;NULL
 3;Цинковый завод;0;1;ЦЗ;4;3094;Zn;0;1;0;mdp_1;0;NULL;NULL;NULL;NULL;NULL;1\3;УКМК\ЦЗ;УКМК\Цинковый завод;1;NULL
