@@ -4,7 +4,7 @@ using Weight.Program.WeightDatabase.Tables;
 
 namespace Weight.Program.WeightDatabase.Configurations;
 
-public class DepartmentConfiguration :
+public sealed class DepartmentConfiguration :
     IEntityTypeConfiguration<Department>
 {
     public void Configure(EntityTypeBuilder<Department> builder)

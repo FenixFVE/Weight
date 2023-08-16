@@ -4,7 +4,7 @@ using Weight.Program.WeightDatabase.Tables;
 
 namespace Weight.Program.WeightDatabase.Configurations;
 
-public class SupportServiceConfiguration :
+public sealed class SupportServiceConfiguration :
     IEntityTypeConfiguration<SupportService>
 {
     public void Configure(EntityTypeBuilder<SupportService> builder)

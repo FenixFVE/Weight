@@ -4,7 +4,7 @@ using Weight.Program.WeightDatabase.Tables;
 
 namespace Weight.Program.WeightDatabase.Configurations;
 
-public class ControlWeighingStatusConfiguration :
+public sealed class ControlWeighingStatusConfiguration :
     IEntityTypeConfiguration<ControlWeighingStatus>
 {
     public void Configure(EntityTypeBuilder<ControlWeighingStatus> builder)

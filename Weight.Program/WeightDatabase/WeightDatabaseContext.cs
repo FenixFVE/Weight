@@ -5,7 +5,7 @@ namespace Weight.Program.WeightDatabase;
 
 public class WeightContext: DbContext
 {
-    public DbSet<ControllWeighing> ControllWeighings { get; set; } = null!;
+    public DbSet<ControlWeighing> ControllWeighings { get; set; } = null!;
     public DbSet<ControlWeighingStatus> ControlWeighingStatuses { get; set; } = null!;
     public DbSet<ControlWeighingEvaluationType> ControlWeighingEvaluationTypes { get; set; } = null!;   
     public DbSet<ControlWeighingSetting> ControlWeighingSettings { get; set; } = null!;
@@ -17,8 +17,11 @@ public class WeightContext: DbContext
 
     public WeightContext()
     {
-        Database.EnsureDeleted();
-        Database.EnsureCreated();
+        //Database.EnsureDeleted();
+        if (!Database.CanConnect())
+        {
+            Database.EnsureCreated();
+        }
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -26,5 +29,10 @@ public class WeightContext: DbContext
         optionsBuilder
             .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=weightdb;Trusted_Connection=True")
             .AddInterceptors(new SoftDeleteInterceptor());
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
     }
 }
