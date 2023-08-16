@@ -17,8 +17,6 @@ public sealed class Department: BaseTable
     public bool IsCustomer { get; set; } = false;
     public int? MasterDataCode { get; set;} = null;
     public bool IsMasterData {  get; set; } = false;
-    public DateTime? AuditDate { get; set; } = null;
-    public int? CreaterId { get; set; } = null;
     public int? ShortLocalizationId { get; set; } = null;
     public string? SavedFullPathId { get; set; } = null;
     public string? SavedFullPathShortName { get; set; } = null;

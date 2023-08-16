@@ -22,4 +22,14 @@ public sealed class ControlWeighingSetting: BaseTable
     public int? SecondWeightSettingId { get; set; } = null;
     [Ignore]
     public WeightSetting? SecondWeightSetting { get; set; } = null;
+
+    public bool IsActive { get; set; } = false;
+    public double? Limit { get; set; } = null;
+    public bool IsRelativeLimit { get; set; } = false;
+    public double? ReferenceWeight { get; set; } = null;
+    public bool IsBlockedWeightSetting { get; set; } = false;
+
+    public int? ThreeWeightSettingId { get; set; } = null;
+    [Ignore]
+    public WeightSetting? ThreeWeightSetting { get; set; } = null;
 }

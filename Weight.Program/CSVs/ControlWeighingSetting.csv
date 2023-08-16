@@ -1,4 +1,4 @@
-﻿Id;ControlWeighingScheduleTypeId;ControlWeighingEvalationTypeId;WeigthSettingID;AuditDate;CreaterId;DeletedDate;DeletedUser;IsDelete;SecondWeigthSettingID;IsActive;Limit;IsRelativeLimit;ReferenceWeight;IsBlockedWeightSetting;ThreeWeigthSettingID
+﻿Id;ControlWeighingScheduleTypeId;ControlWeighingEvaluationTypeId;WeightSettingId;AuditDate;CreaterId;DeletedDate;DeletedUser;IsDelete;SecondWeightSettingId;IsActive;Limit;IsRelativeLimit;ReferenceWeight;IsBlockedWeightSetting;ThreeWeightSettingId
 3;2;2;10;2023-07-17 15:01:02.320;940a30e6-54d5-4b32-9df0-88c1c4d42560;NULL;NULL;0;13;1;12.000000;0;1000.000000;0;NULL
 4;4;3;101;2023-08-09 11:06:42.907;ae45bc38-6315-4a7d-ae4b-034251898d32;NULL;NULL;0;102;1;1.000000;0;0.000000;0;NULL
 5;4;3;106;2023-08-09 11:07:15.713;ae45bc38-6315-4a7d-ae4b-034251898d32;NULL;NULL;0;107;1;1.000000;1;0.000000;0;NULL

@@ -23,8 +23,6 @@ public sealed class WeightSetting: BaseTable
     public int? MinutesBeforeControlWeighing { get; set; } = null;
     public double? ControlCargoWeight { get; set; } = null;
     public double? TolerableDeviationWeight { get; set; } = null;
-    public DateTime? AuditDate { get; set; } = null;
-    public int? CreaterId { get; set; } = null;
     public int? ScalePollAlgorithmId { get; set; } = null;
     public string? ParseMask { get; set; } = null;
     public int? TimeOutRead { get; set; } = null;

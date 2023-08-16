@@ -7,4 +7,5 @@ namespace Weight.Program.WeightDatabase.Tables;
 public sealed class ControlWeighingEvaluationType: BaseTable
 {
     public string? Name { get; set; } = null;
+    public int? Type { get; set; } = null;
 }
