@@ -27,6 +27,7 @@ public class WeightContext: DbContext
         optionsBuilder
             .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=weightdb;Trusted_Connection=True")
             .AddInterceptors(new SoftDeleteInterceptor());
+        //base.OnConfiguring(optionsBuilder);
     }
 
     public void SeedFromCsv()
