@@ -11,16 +11,20 @@ public sealed class SupportServiceConfiguration :
     {
         builder.HasKey(k => k.Id);
 
-        builder.Property(c => c.Name)
-            //.IsRequired()
-            .HasMaxLength(32);
+        builder.Property(c => c.Name);
+        //.IsRequired()
+        //.HasMaxLength(32);
 
+        var options = new List<string>()
+        {
+            "ПККА",
+            "Весовая группа",
+            "Сеть",
+            "ИТ",
+            "Взвешивание"
+        };
         builder.ToTable(t
              => t.HasCheckConstraint("CK_SupportService_Name",
-             "Name IN ('ПККА', " +
-             "'Весовая группа', " +
-             "'Сеть', " +
-             "'ИТ', " +
-             "'Взвешивание')"));
+             "Name IN (N'" + string.Join("', N'", options) + "')"));
     }
 }

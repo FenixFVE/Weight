@@ -9,6 +9,17 @@ using (var db = new DatabaseContext())
 {
     Console.WriteLine("Connected");
     db.SeedFromCsv();
-    var name = db.Persons.First().Name;
-    Console.WriteLine(name);
+    
+    foreach (var person in db.Persons)
+    {
+        Console.WriteLine($"{person.Id} : {person.Name}");
+    }
+    Console.WriteLine("---");
+    
+    db.SaveChanges();
+
+    foreach (var person in db.Persons)
+    {
+        Console.WriteLine($"{person.Id} : {person.Name}");
+    }
 }

@@ -11,15 +11,19 @@ public sealed class ControlWeighingScheduleTypeConfiguration :
     {
         builder.HasKey(k => k.Id);
 
-        builder.Property(c => c.Name)
-            //.IsRequired()
-            .HasMaxLength(32);
+        builder.Property(c => c.Name);
+        //.IsRequired()
+        //.HasMaxLength(32);
 
+        var options = new List<string>()
+        {
+            "Время от последнего взвешивания, мин",
+            "Кол-во взвешиваний",
+            "Вручную",
+            "Расписание по дням периода"
+        };
         builder.ToTable(t
             => t.HasCheckConstraint("CK_ControlWeighingScheduleType_Name",
-            "Name IN ('Время от последнего взвешивания, мин', " +
-            "'Кол-во взвешиваний', " +
-            "'Вручную', " +
-            "'Расписание по дням периода')"));
+            "Name IN (N'" + string.Join("', N'", options) + "')"));
     }
 }

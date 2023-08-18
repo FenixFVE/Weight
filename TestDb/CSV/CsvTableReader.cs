@@ -13,7 +13,7 @@ public sealed class CsvTableReader
         if (!File.Exists(csvFilePath))
             throw new FileNotFoundException(csvFilePath);
 
-        using var reader = new StreamReader(csvFilePath, Encoding.UTF8);
+        using var reader = new StreamReader(csvFilePath, Encoding.Default);    
 
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
@@ -42,7 +42,7 @@ public sealed class CsvTableReader
         if (!File.Exists(csvFilePath))
             throw new FileNotFoundException(csvFilePath);
 
-        using var reader = new StreamReader(csvFilePath, Encoding.UTF8);
+        using var reader = new StreamReader(csvFilePath, Encoding.Default);
 
         var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
         {

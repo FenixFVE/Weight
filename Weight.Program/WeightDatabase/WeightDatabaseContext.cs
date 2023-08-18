@@ -19,6 +19,7 @@ public class WeightContext: DbContext
 
     public WeightContext() 
     {
+        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
@@ -33,17 +34,8 @@ public class WeightContext: DbContext
     public void SeedFromCsv()
     {
         if (Database.CanConnect())
-            Database.EnsureDeletedAsync();
+            Database.EnsureDeleted();
         Database.EnsureCreated();
-
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighings ON");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighingStatuses ON");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighingEvaluationTypes ON");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighingSettings ON");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighingScheduleTypes ON");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WeightSettings ON");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Departments ON");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.SupportServices ON");
 
         ControlWeighings.AddRange(CsvTableReader.Read<ControlWeighing>());
         ControlWeighingStatuses.AddRange(CsvTableReader.Read<ControlWeighingStatus>());
@@ -54,15 +46,6 @@ public class WeightContext: DbContext
         Departments.AddRange(CsvTableReader.Read<Department>());
         //Supports.AddRange(CsvTableReader.Read<Support>());
         SupportServices.AddRange(CsvTableReader.Read<SupportService>());
-
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighings OFF");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighingStatuses OFF");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighingEvaluationTypes OFF");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighingSettings OFF");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.ControlWeighingScheduleTypes OFF");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WeightSettings OFF");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Departments OFF");
-        Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.SupportServices OFF");
 
         SaveChanges();
     }

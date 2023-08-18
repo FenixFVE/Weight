@@ -12,12 +12,18 @@ public sealed class ControlWeighingEvaluationTypeConfiguration :
     {
         builder.HasKey(c => c.Id);
 
-        builder.Property(c => c.Name)
-            //.IsRequired()
-            .HasMaxLength(32);
+        //builder.Property(c => c.Name);
+        //    .IsRequired()
+        //    .HasMaxLength(32);
 
+        var options = new List<string>()
+        {
+            "от контрольного груза",
+            "отклонение 2-х взвешиваний",
+            "отклонение 3-х взвешиваний"
+        };
         builder.ToTable(t
             => t.HasCheckConstraint("CK_ControlWeighingEvaluationType_Name",
-            "Name IN ('от контрольного груза', 'отклонение 2-x взвешиваний')"));
+            "Name IN (N'" + string.Join("', N'", options) + "')"));
     }
 }

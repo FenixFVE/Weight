@@ -1,8 +1,11 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Weight.Program.WeightDatabase.Tables;
 
 public class BaseTable
 {
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int Id { get; set; }
 
     public int? CreaterId { get; set; } = null;

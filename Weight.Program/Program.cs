@@ -9,11 +9,18 @@ public class Program
 {
     private static void Main(string[] args)
     {
-        Console.OutputEncoding = Encoding.UTF8;
+        Console.OutputEncoding = Encoding.Default;
         
         using (var db = new WeightContext())
         {
             db.SeedFromCsv();
+            //var controlWeighings = db.ControlWeighings.FirstOrDefault(c => c.ControlWeighingSettingsId != null);
+            //var controlWeighingSettings = controlWeighings.ControlWeighingSettings;
+            //Console.WriteLine(controlWeighingSettings is null);
+            foreach (var x in db.ControlWeighingStatuses)
+            {
+                Console.WriteLine($"-{x.Name}-");
+            }
         }
     }
 }
