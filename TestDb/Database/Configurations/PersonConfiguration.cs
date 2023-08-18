@@ -10,5 +10,7 @@ public sealed class PersonConfiguration
     public void Configure(EntityTypeBuilder<Person> builder)
     {
         builder.HasKey(k => k.Id);
+
+        //builder.Property(p => p.Id)
     }
 }

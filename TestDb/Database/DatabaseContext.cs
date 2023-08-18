@@ -7,12 +7,11 @@ namespace TestDb.Database;
 
 public class DatabaseContext: DbContext
 {
-    public DbSet<User> Users { get; set; } = null!;
     public DbSet<Person> Persons { get; set; } = null!;
 
     public DatabaseContext(): base()
     {
-        Database.EnsureDeleted();
+        //Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
@@ -24,28 +23,32 @@ public class DatabaseContext: DbContext
             .AddInterceptors(new SoftDeleteInterceptor());
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Person>().Property(b => b.Id).ValueGeneratedNever();
+
+        base.OnModelCreating(modelBuilder);
+    }
+
+    public void SetInitialId()
+    {
+        Person.InitializeCounter(Persons.Any() ? Persons.Max(m => m.Id) + 1 : 1);
+    }
+
     public void SeedFromCsv()
     {
         if (Database.CanConnect())
             Database.EnsureDeleted();
         Database.EnsureCreated();
+        SetInitialId();
 
-        var person1 = new Person() { Id = 2, Age = 20, Name = "Bob" };
-        var person2 = new Person() { Id = 3, Age = 30, Name = "Stasy" };
-
-        //var user1 = new User() { Id = 5, Person = person1, Password = "1234" };
-        //var user2 = new User() { Id = 6, Person = person1, Password = "pasword" };
-        //var user3 = new User() { Id = 7, Person = person2, Password = "qwerty" };
+        var person1 = new Person() { Age = 20, Name = "Bob" };
+        var person2 = new Person() { Age = 30, Name = "Stasy" };
 
         var persons = new List<Person>() { person1, person2 };
-        //var users = new List<User>() { user1, user2, user3 };
-
 
         Persons.AddRange(persons);
-        //Users.AddRange(users);
-        
 
         SaveChanges();
     }
-
 }
