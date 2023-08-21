@@ -1,11 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Weight.Program.WeightDatabase.Configurations;
+using CsvHelper.Configuration.Attributes;
 
 namespace Weight.Program.WeightDatabase.Tables;
 
 [EntityTypeConfiguration(typeof(DepartmentConfiguration))]
-public sealed class Department: BaseTable
+public sealed class Department: BaseTable, IInitializableCounter
 {
+    [Ignore]
+    private static int _idCounter;
+    public Department()
+    {
+        Id = _idCounter++;
+    }
+    public static void InitializeCounter(int initialValue)
+    {
+        _idCounter = initialValue;
+    }
+
     public string? Name { get; set; } = null;
     public int? ParentId { get; set; } = null;
     public string? ShortName { get; set; } = null;

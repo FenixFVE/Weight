@@ -19,8 +19,6 @@ public class WeightContext: DbContext
 
     public WeightContext() 
     {
-        Database.EnsureDeleted();
-        Database.EnsureCreated();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,7 +26,31 @@ public class WeightContext: DbContext
         optionsBuilder
             .UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=weightdb;Trusted_Connection=True")
             .AddInterceptors(new SoftDeleteInterceptor());
-        //base.OnConfiguring(optionsBuilder);
+        base.OnConfiguring(optionsBuilder);
+    }
+
+
+    public void SetInitialId<T>(DbSet<T> set) where T : BaseTable, IInitializableCounter
+    {
+        T.InitializeCounter(set.Any() ? set.Max(m => m.Id) + 1 : 1);
+    }
+
+    public void SetInitialId()
+    {
+        SetInitialId(ControlWeighings);
+        SetInitialId(ControlWeighingStatuses);
+        SetInitialId(ControlWeighingEvaluationTypes);
+        SetInitialId(ControlWeighingSettings);
+        SetInitialId(ControlWeighingScheduleTypes);
+        SetInitialId(WeightSettings);
+        SetInitialId(Departments);
+        SetInitialId(Supports);
+        SetInitialId(SupportServices);
+    }
+
+    private void SeedFromCsv<T>(DbSet<T> set) where T : BaseTable
+    {
+        set.AddRange(CsvTableReader.Read<T>());
     }
 
     public void SeedFromCsv()
@@ -37,17 +59,19 @@ public class WeightContext: DbContext
             Database.EnsureDeleted();
         Database.EnsureCreated();
 
-        ControlWeighings.AddRange(CsvTableReader.Read<ControlWeighing>());
-        ControlWeighingStatuses.AddRange(CsvTableReader.Read<ControlWeighingStatus>());
-        ControlWeighingEvaluationTypes.AddRange(CsvTableReader.Read<ControlWeighingEvaluationType>());
-        ControlWeighingSettings.AddRange(CsvTableReader.Read<ControlWeighingSetting>());
-        ControlWeighingScheduleTypes.AddRange(CsvTableReader.Read<ControlWeighingScheduleType>());
-        WeightSettings.AddRange(CsvTableReader.Read<WeightSetting>());
-        Departments.AddRange(CsvTableReader.Read<Department>());
-        //Supports.AddRange(CsvTableReader.Read<Support>());
-        SupportServices.AddRange(CsvTableReader.Read<SupportService>());
+        SeedFromCsv(ControlWeighings);
+        SeedFromCsv(ControlWeighingStatuses);
+        SeedFromCsv(ControlWeighingEvaluationTypes);
+        SeedFromCsv(ControlWeighingSettings);
+        SeedFromCsv(ControlWeighingScheduleTypes);
+        SeedFromCsv(WeightSettings);
+        SeedFromCsv(Departments);
+        //SeedFromCsv(Supports);
+        SeedFromCsv(SupportServices);
 
         SaveChanges();
+
+        SetInitialId();
     }
 
 }

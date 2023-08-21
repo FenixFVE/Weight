@@ -5,8 +5,20 @@ using Weight.Program.WeightDatabase.Configurations;
 namespace Weight.Program.WeightDatabase.Tables;
 
 [EntityTypeConfiguration(typeof(ControlWeighingConfiguration))]
-public sealed class ControlWeighing: BaseTable
+public sealed class ControlWeighing: BaseTable, IInitializableCounter
 {
+    [Ignore]
+    private static int _idCounter;
+    public ControlWeighing() 
+    { 
+        Id = _idCounter++;
+    }
+    public static void InitializeCounter(int initialValue)
+    {
+        _idCounter = initialValue;
+    }
+
+
     public int? ControlWeighingSettingsId { get; set; } = null;
     [Ignore]
     public ControlWeighingSetting? ControlWeighingSettings { get; set; } = null;
